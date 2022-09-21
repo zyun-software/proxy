@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  nginx-proxy:
+    container_name: vps-zyun-software_nginx-proxy
+    build:
+      context: ./docker/nginx-ssl
+      network: host
+      args:
+        - CERTBOT_EMAIL
+        - CERTBOT_DOMAIN_LIST
+    restart: always
+    networks:
+      - vps-zyun-software_network
+    volumes:
+      - ./docker/nginx-ssl/conf.d:/etc/nginx/conf.d
+      - letsencrypt:/etc/letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+
+volumes:
+  letsencrypt:
+
+networks:
+  vps-zyun-software_network:
+    external: true
