@@ -1,27 +1,20 @@
-version: "3.9"
+version: '3'
 
 services:
-  nginx-proxy:
-    container_name: vps-zyun-software_nginx-proxy
-    build:
-      context: ./docker/nginx-ssl
-      network: host
-      args:
-        - CERTBOT_EMAIL
-        - CERTBOT_DOMAIN_LIST
-    restart: always
-    networks:
-      - vps-zyun-software_network
-    volumes:
-      - ./docker/nginx-ssl/conf.d:/etc/nginx/conf.d
-      - letsencrypt:/etc/letsencrypt
-    ports:
-      - 80:80
-      - 443:443
+    nginx:
+        restart: unless-stopped
+        image: staticfloat/nginx-certbot
+        network_mode: host
+        environment:
+            CERTBOT_EMAIL: $CERTBOT_EMAIL
+            ENVSUBST_VARS: SERVER_NAME CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT
+            # Змінні для щаблону
+            SERVER_NAME: $SERVER_NAME
+            CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT: $CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT
+        volumes:
+            - ./.docker/nginx/conf.d:/etc/nginx/user.conf.d:ro
+            - ./html:/usr/share/nginx/html
+            - letsencrypt:/etc/letsencrypt
 
 volumes:
-  letsencrypt:
-
-networks:
-  vps-zyun-software_network:
-    external: true
+    letsencrypt:
