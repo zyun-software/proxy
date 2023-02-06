@@ -1,16 +1,17 @@
-version: '3'
+version: '3.9'
 
 services:
     nginx:
-        restart: unless-stopped
+        #restart: unless-stopped
         image: staticfloat/nginx-certbot
         network_mode: host
         environment:
             CERTBOT_EMAIL: $CERTBOT_EMAIL
-            ENVSUBST_VARS: SERVER_NAME CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT
+            ENVSUBST_VARS: SERVER_NAME CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT VSCODE_SERVER_PORT
             # Змінні для щаблону
             SERVER_NAME: $SERVER_NAME
             CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT: $CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT
+            VSCODE_SERVER_PORT: $VSCODE_SERVER_PORT
         volumes:
             - ./.docker/nginx/conf.d:/etc/nginx/user.conf.d:ro
             - ./html:/usr/share/nginx/html
