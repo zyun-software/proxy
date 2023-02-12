@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     nginx:
-        #restart: unless-stopped
+        restart: unless-stopped
         image: staticfloat/nginx-certbot
         network_mode: host
         environment:
