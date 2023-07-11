@@ -7,11 +7,11 @@ services:
         network_mode: host
         environment:
             CERTBOT_EMAIL: $CERTBOT_EMAIL
-            ENVSUBST_VARS: SERVER_NAME CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT VSCODE_SERVER_PORT
+            ENVSUBST_VARS: SERVER_NAME CAPYLAND_TELEGRAM_BOT_PORT CAPYLAND_FAKE_PLAYERS_PORT
             # Змінні для щаблону
             SERVER_NAME: $SERVER_NAME
-            CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT: $CAPYBAR_VALLEY_RP_TELEGRAM_BOT_PORT
-            VSCODE_SERVER_PORT: $VSCODE_SERVER_PORT
+            CAPYLAND_TELEGRAM_BOT_PORT: $CAPYLAND_TELEGRAM_BOT_PORT
+            CAPYLAND_FAKE_PLAYERS_PORT: $CAPYLAND_FAKE_PLAYERS_PORT
         volumes:
             - ./.docker/nginx/conf.d:/etc/nginx/user.conf.d:ro
             - ./html:/usr/share/nginx/html
