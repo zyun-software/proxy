@@ -7,13 +7,14 @@ services:
         network_mode: host
         environment:
             CERTBOT_EMAIL: $CERTBOT_EMAIL
-            ENVSUBST_VARS: SERVER_NAME CAPYLAND_TGB CAPYLAND_VSCODE SUBSCRIPTION_MANAGER_TGB TRADE_GUILD_TGB_TEST
-            # Змінні для щаблону
+            ENVSUBST_VARS: SERVER_NAME CAPYLAND_TGB CAPYLAND_VSCODE TRADE_GUILD_TGB_MAIN TRADE_GUILD_TGB_TEST CAPYVALLEY_BORDER_PATROL_TGB
+            # Змінні для шаблону
             SERVER_NAME: $SERVER_NAME
             CAPYLAND_TGB: $CAPYLAND_TGB
             CAPYLAND_VSCODE: $CAPYLAND_VSCODE
-            SUBSCRIPTION_MANAGER_TGB: $SUBSCRIPTION_MANAGER_TGB
+            TRADE_GUILD_TGB_MAIN: $TRADE_GUILD_TGB_MAIN
             TRADE_GUILD_TGB_TEST: $TRADE_GUILD_TGB_TEST
+            CAPYVALLEY_BORDER_PATROL_TGB: $CAPYVALLEY_BORDER_PATROL_TGB
         volumes:
             - ./.docker/nginx/conf.d:/etc/nginx/user.conf.d:ro
             - ./html:/usr/share/nginx/html
