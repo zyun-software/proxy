@@ -7,9 +7,11 @@ services:
         network_mode: host
         environment:
             CERTBOT_EMAIL: $CERTBOT_EMAIL
-            ENVSUBST_VARS: SERVER_NAME TRADE_GUILD_TGB_MAIN TRADE_GUILD_TGB_TEST
+            ENVSUBST_VARS: SERVER_NAME ZYUNINC_MAIN ZYUNINC_TEST TRADE_GUILD_TGB_MAIN TRADE_GUILD_TGB_TEST
             # Змінні для шаблону
             SERVER_NAME: $SERVER_NAME
+            ZYUNINC_MAIN: $ZYUNINC_MAIN
+            ZYUNINC_TEST: $ZYUNINC_TEST
             TRADE_GUILD_TGB_MAIN: $TRADE_GUILD_TGB_MAIN
             TRADE_GUILD_TGB_TEST: $TRADE_GUILD_TGB_TEST
         volumes:
