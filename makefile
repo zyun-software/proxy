@@ -2,7 +2,7 @@ setup:
 	docker compose build
 
 sh:
-	docker compose run --rm nginx bash
+	docker compose run --rm proxy bash
 
 up:
 	docker compose up
